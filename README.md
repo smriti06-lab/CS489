@@ -1,8 +1,13 @@
-# Project Title
+# Replicating an Immersive Sound System
+
 
 ## Overview
 
-Provide a brief overview of your project, explaining what it does and why it's useful.
+Develop a system capable of creating high-fidelity, three-dimensional sound, enhancing virtual reality experiences, and aiding in personalized audio delivery.
+
+## Problem statement
+
+Upon extensive research, we found that modern solutions fall short in delivering authentic 3D auditory experiences without resorting to elaborate multi-speaker arrangements, which can be intrusive and expensive. The goal is to transcend these constraints by harnessing artificial intelligence to create a more organic and enveloping soundscape.
 
 ## Table of Contents
 

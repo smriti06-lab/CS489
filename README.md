@@ -15,34 +15,30 @@ Upon extensive research, we found that modern solutions fall short in delivering
 - [Usage](#usage)
 - [Features](#features)
 - [Contributing](#contributing)
-- [License](#license)
 - [Acknowledgements](#acknowledgements)
 - [Contact](#contact)
 
 ## Installation
 
-Include step-by-step instructions on how to install your project. This should cover any dependencies and setup required.
+Work in progress
 
 ## Usage
 
-Explain how users can use your project. Include examples or code snippets if applicable.
+Work in progress
 
 ## Features
 
-List the key features of your project.
+Work in progress
 
 ## Contributing
 
-If you're open to contributions, provide guidelines on how others can contribute to your project. This could include information on pull requests, coding standards, and issue reporting.
-
-## License
-
-Specify the license under which your project is distributed. You can provide a brief summary of the license and include a link to the full license text.
+Work in progress
 
 ## Acknowledgements
 
-Acknowledge any libraries, tools, or individuals who have contributed to your project.
+Work in progress
 
 ## Contact
 
-Provide a way for users to get in touch with you, whether it's through email, social media, or other channels.
+-> Smriti Sharma (s462shar@uwaterloo.ca)
+-> Tarun Velicheti (tveliche@uwaterloo.ca)

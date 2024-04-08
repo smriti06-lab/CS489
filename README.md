@@ -57,5 +57,5 @@ Work in progress
 
 ## Contact
 
--> Smriti Sharma (s462shar@uwaterloo.ca)
--> Tarun Velicheti (tveliche@uwaterloo.ca)
+- Smriti Sharma (s462shar@uwaterloo.ca)
+- Tarun Velicheti (tveliche@uwaterloo.ca)

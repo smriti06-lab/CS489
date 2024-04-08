@@ -43,7 +43,7 @@ Once you have `ffmpeg` installed, make sure the following libraries are installe
 
 ## Usage
 
-Work in progress
+The program files that generate the GUI and conver the audio are `audio_effects.py` and `music_player.py`. The `gen8d.ipynb` is our initial project file with testing on Google colab.
 
 ## Features
 

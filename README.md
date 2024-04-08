@@ -53,7 +53,7 @@ The GUI features include:
 
 ## Acknowledgements
 
-Work in progress
+We would like to thank Prof. Richard Mann and the TAs for Winter 2024 CS-489 Computational Audio course for giving us a chance and for mentoring us throughout the project timeline. Their feedbacks on our progress and submissions gave us insights into building the project.
 
 ## Contact
 

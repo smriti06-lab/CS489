@@ -5,6 +5,8 @@
 
 Develop a system capable of creating high-fidelity, three-dimensional sound, enhancing virtual reality experiences, and aiding in personalized audio delivery.
 
+![Logo](https://github.com/smriti06-lab/CS489/blob/main/Images/music.gif)
+
 ## Problem statement
 
 Upon extensive research, we found that modern solutions fall short in delivering authentic 3D auditory experiences without resorting to elaborate multi-speaker arrangements, which can be intrusive and expensive. The goal is to transcend these constraints by harnessing artificial intelligence to create a more organic and enveloping soundscape.
@@ -53,7 +55,7 @@ The GUI features include:
 
 ## Acknowledgements
 
-We would like to thank Prof. Richard Mann for giving us a chance and for mentoring us throughout the project timeline. His feedbacks on our progress and submissions gave us much needed insights into shaping the project.
+We would like to thank Prof. Richard Mann for giving us a chance and for mentoring us throughout the project timeline. His feedbacks on our progress and submissions gave us much needed insights into shaping the project and the report.
 
 ## Contact
 

@@ -5,7 +5,7 @@
 
 Develop a system capable of creating high-fidelity, three-dimensional sound, enhancing virtual reality experiences, and aiding in personalized audio delivery.
 
-![Logo](https://github.com/smriti06-lab/CS489/blob/main/Images/music.gif)
+![Logo](https://github.com/smriti06-lab/CS489/blob/main/Images/repooverview.gif)
 
 ## Problem statement
 

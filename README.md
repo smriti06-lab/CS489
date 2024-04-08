@@ -14,7 +14,6 @@ Upon extensive research, we found that modern solutions fall short in delivering
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
-- [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
 - [Contact](#contact)
 
@@ -46,11 +45,11 @@ Work in progress
 
 ## Features
 
-Work in progress
-
-## Contributing
-
-Work in progress
+The GUI features include: 
+- Select folder of songs you wish to play
+- Be able to seek to next and previous songs in the music player
+- Convert the song of your selection to 8D by adding panning, slow effect and reverb.
+- Plot a waveform of the original song and the 8D audio to see a comparision.
 
 ## Acknowledgements
 

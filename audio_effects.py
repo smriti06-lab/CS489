@@ -95,12 +95,3 @@ def saveSound(sound, sampleRate, outputFile):
     removeFile("temp2" + ".wav")
     removeFile("temp.wav")
 
-
-# main.py content
-# sound = loadSound(inputFile)
-# sound8d = effect8d(sound)
-# sound8dAndSlowedDown = effectSlowedDown(sound8d)
-# sound8dSlowedDownReverbed, soundSampleRate = effectReverb(sound8d)
-# saveSound(sound8dSlowedDownReverbed, soundSampleRate, outputFile)
-# # saveSound(sound8d, soundSampleRate)
-# print("8d + slow + reverb effect added successfully!")

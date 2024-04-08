@@ -136,11 +136,6 @@ def convert_to_8d_audio():
         sound_8d_slowed = effectSlowedDown(sound_8d)
         sound_8d_slowed_reverb, sr = effectReverb(sound_8d_slowed)
 
-        # data1 = np.array(sound.get_array_of_samples())
-        # data2 = np.array(sound_8d_slowed_reverb)
-        # sample_rate = sound.frame_rate
-        # plot_waveform_comparison(data1, data2, sample_rate=sample_rate)
-
         # Play the converted audio
         outpath = selected_folder_path + "/converted" + selected_song
         saveSound(sound_8d_slowed_reverb, sr, outpath)
@@ -165,7 +160,6 @@ def plot_waveform_comparison(data1, data2, sample_rate, start_time =10, end_time
     plt.ylabel('Amplitude')
     plt.title('Comparison of Regular and 8D Music')
     plt.legend()
-    # plt.show()
     plot_window = tk.Toplevel(window)
     plot_window.title('Waveform Comparison')
     plot_window.geometry('800x600')

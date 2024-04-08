@@ -20,7 +20,25 @@ Upon extensive research, we found that modern solutions fall short in delivering
 
 ## Installation
 
-Work in progress
+The project requires:
+  1) Python v 3.10 and above
+  2) `pip` (python package installation)
+  3) [ffmpeg](https://ffmpeg.org/about.html)
+
+[ffmpeg installation guide](https://windowsloop.com/install-ffmpeg-windows-10/)<br />
+`ffmpeg` is a universal media converter. It can read a wide variety of inputs - including live grabbing/recording devices - filter, and transcode them into a plethora of output formats.
+It is crucial to make sure that `ffmpeg` is properly installed for the project to run.
+
+Once you have `ffmpeg` installed, make sure the following libraries are installed using `pip` (`pip install <library>`):
+- `tkinkter` : Generates a GUI for the music player
+- `customtkinter` : Provides UI components used in the GUI
+- `mutagen` : Use to process `mp3` format files
+- `pygame` : Used to perform operations in the GUI and play music through the GUI
+- `numpy` : Used in signal processing
+- `matplotlib` : Used in plotting the waveforms
+- `pydub` : Used in audio file processing
+- `soundfile` : Used in audio file processing (has functions absent in pydub)
+- `pedalboard` : Used to add effects to the audio files.
 
 ## Usage
 

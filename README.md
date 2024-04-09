@@ -49,7 +49,7 @@ The program files that generate the GUI and conver the audio are `audio_effects.
 - Installation guide in the above section has all the libraries nedded to run the app.
 - run the command `python music_player.py` for the GUI to pop up and select the Music folder in the GUI pop up to use the app!
 
-  ---- Video here-----
+  [Youtube Link](https://www.youtube.com/watch?v=CbPVmHjnqx4)
 
 
 ## Features

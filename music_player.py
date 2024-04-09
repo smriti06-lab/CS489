@@ -10,6 +10,7 @@ import os
 import numpy as np
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
+import librosa
 
 from audio_effects import loadSound, effect8d, effectSlowedDown, effectReverb, saveSound
 
@@ -20,6 +21,7 @@ pygame.mixer.init()
 current_position = 0
 paused = False
 selected_folder_path = ""  # Store the selected folder path
+analysis_directory = "Analysis/"
 
 
 def update_progress():
@@ -140,10 +142,21 @@ def convert_to_8d_audio():
         outpath = selected_folder_path + "/converted" + selected_song
         saveSound(sound_8d_slowed_reverb, sr, outpath)
         update_song_list()
+
+        # Waveform comparison
         data1 = np.array(sound.get_array_of_samples())
-        data2 = np.array(sound_8d_slowed_reverb)
+        converted_sound = loadSound(outpath)
+        data2 = np.array(converted_sound.get_array_of_samples())
         sample_rate = sound.frame_rate
         plot_waveform_comparison(data1, data2, sample_rate=sample_rate)
+
+        # Frequency Spectrum and Energy Density
+        plot_spectrum_and_envelope(data1, data2, sample_rate, "Compare Regular and 8D Music")
+
+        # Plotting MFCCs
+        mfccs_regular = compute_mfcc(sound)
+        mfccs_8d = compute_mfcc(converted_sound)
+        plot_mfccs(mfccs_regular, mfccs_8d, "MFCC Comparison - Regular cs. 8D Music")
 
 
 def plot_waveform_comparison(data1, data2, sample_rate, start_time =10, end_time = 20):
@@ -153,22 +166,114 @@ def plot_waveform_comparison(data1, data2, sample_rate, start_time =10, end_time
 
     # Plot selected portions of waveforms
     plt.figure(figsize=(10, 6))
-    time = np.arange(start_index, end_index) / sample_rate
-    plt.plot(time, data1[start_index:end_index], label='Regular Music', color='blue')
-    plt.plot(time, data2[start_index:end_index], label='8D Music', color='red')
+    plt.plot(np.arange(start_index, end_index) / sample_rate, data1[start_index:end_index], label='Regular Music', color='blue')
+    plt.plot(np.arange(start_index, end_index) / sample_rate, data2[start_index:end_index], label='8D Music', color='red')
     plt.xlabel('Time (s)')
     plt.ylabel('Amplitude')
     plt.title('Comparison of Regular and 8D Music')
     plt.legend()
+    # plt.show()
     plot_window = tk.Toplevel(window)
     plot_window.title('Waveform Comparison')
     plot_window.geometry('800x600')
+    plot_filename = analysis_directory + 'waveform_comparison.png'
+    plt.savefig(plot_filename)
 
     # Embed the plot into the Tkinter window
-    canvas = FigureCanvasTkAgg(plt.gcf(), master=plot_window)
-    canvas.draw()
-    canvas.get_tk_widget().pack(expand=True, fill=tk.BOTH)
+    # canvas = FigureCanvasTkAgg(plt.gcf(), master=plot_window)
+    # canvas.draw()
+    # canvas.get_tk_widget().pack(expand=True, fill=tk.BOTH)
 
+
+# Function to plot frequency spectrum and energy envelope
+def plot_spectrum_and_envelope(data1, data2, sample_rate, title):
+    # Extract data and sample rate from sounds
+    # data1 = np.array(sound1.get_array_of_samples())
+    # data2 = np.array(sound2.get_array_of_samples())
+    # sample_rate = sound1.frame_rate
+
+    # Calculate frequency spectrum and energy envelope
+    frequencies1, spectrum1 = plt.psd(data1, Fs=sample_rate)
+    envelope1 = np.abs(data1)
+    frequencies2, spectrum2 = plt.psd(data2, Fs=sample_rate)
+    envelope2 = np.abs(data2)
+
+    # Plot frequency spectrum and energy envelope
+    plt.figure(figsize=(12, 6))
+    plt.subplot(2, 1, 1)
+    plt.plot(frequencies1, 10 * np.log10(spectrum1), label='Regular Music', color='blue')
+    plt.plot(frequencies2, 10 * np.log10(spectrum2), label='8D Music', color='red')
+    plt.xlabel('Frequency (Hz)')
+    plt.ylabel('Power/Frequency (dB/Hz)')
+    plt.title('Frequency Spectrum Comparison')
+    plt.legend()
+
+    plt.subplot(2, 1, 2)
+    plt.plot(np.arange(len(data2)) / sample_rate, envelope2, label='8D Music', color='red')
+    plt.plot(np.arange(len(data1)) / sample_rate, envelope1, label='Regular Music', color='blue')
+
+    plt.xlabel('Time (s)')
+    plt.ylabel('Energy')
+    plt.title('Energy Envelope Comparison')
+    plt.legend()
+    plot_filename = analysis_directory + "freq_energy_env.png"
+
+    plt.suptitle(title)
+    plt.tight_layout()
+    plt.savefig(plot_filename)
+
+
+def compute_mfcc(sound):
+    # Convert audio signal to a numpy array with floating-point values for processing
+    data = np.array(sound.get_array_of_samples(), dtype=np.float32)
+
+    # Retrieve the sampling rate from the sound object, which is necessary for MFCC calculation
+    sample_rate = sound.frame_rate
+
+    # Compute the MFCCs using librosa's feature.mfcc function, which extracts
+    # the Mel Frequency Cepstral Coefficients representing the sound
+    mfccs = librosa.feature.mfcc(y=data, sr=sample_rate, n_mfcc=13)
+
+    # Return the computed MFCCs back to the caller
+    return mfccs
+
+
+def plot_mfccs(mfccs1, mfccs2, title):
+    # Set up the figure size for the plots
+    plt.figure(figsize=(10, 6))
+
+    # Plot the MFCCs for the first sound (e.g., regular music)
+    # It uses a subplot for multi-part figures - in this case, 2 rows by 1 column, 1st position
+    plt.subplot(2, 1, 1)
+
+    # Display the MFCCs as a heatmap using librosa's specshow function
+    librosa.display.specshow(mfccs1, x_axis='time')
+
+    # Include a colorbar to indicate the scale
+    plt.colorbar()
+
+    # Title for the first MFCC plot (regular music)
+    plt.title('MFCCs - Regular Music')
+
+    # Plot the MFCCs for the second sound (e.g., 8D music)
+    # Similar layout as the first, but in the 2nd position
+    plt.subplot(2, 1, 2)
+    librosa.display.specshow(mfccs2, x_axis='time')
+    plt.colorbar()
+
+    # Title for the second MFCC plot (8D music)
+    plt.title('MFCCs - 8D Music')
+
+    # Set an overall title for the combined figure
+    plt.suptitle(title)
+
+    # Adjust the layout so everything fits without overlapping
+    plt.tight_layout()
+    plot_path = analysis_directory + "mfcc.png"
+    plt.savefig(plot_path)  # Or use .jpg, .pdf, etc.
+
+
+# -------------------------------------------- GUI CODE --------------------------------------------
 
 # Create the main window
 window = tk.Tk()

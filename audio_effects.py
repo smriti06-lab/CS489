@@ -6,8 +6,8 @@ from os import remove as removeFile
 
 
 # settings.py content
-inputFile = r"Music/testsong1"  # Name of the file to import
-outputFile = r"Music/music8d"      # Name of the file to export
+# inputFile = r"Music/testsong1"  # Name of the file to import
+# outputFile = r"Music/music8d"      # Name of the file to export
 timeLtoR = 1000  # Time taken for audio to move left -> right in ms
 jumpPercentage = 5  # % of dist b/w L-R to jump at a time
 panBoundary = 100  # % of dist from center that audio source can go
